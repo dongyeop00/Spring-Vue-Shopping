@@ -4,12 +4,11 @@
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Album example</h1>
-          <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the
-            creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+          <h1 class="fw-light">나는 풀스택 개발자가 될거야</h1>
+          <p class="lead text-body-secondary">SpringBoot-Vue를 사용중</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+            <a href="https://www.notion.so/02fb1fe35ad4479f82356e6c674539f1?pvs=4" class="btn btn-primary my-2">노션</a> &nbsp;
+            <a href="https://github.com/dongyeop00" class="btn btn-secondary my-2">깃허브</a>
           </p>
         </div>
       </div>
