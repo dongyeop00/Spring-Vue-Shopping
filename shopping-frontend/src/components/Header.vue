@@ -11,12 +11,19 @@
               백엔드는 Springboot를 사용하였고 프론트엔드는 Vue를 사용했습니다.
             </p>
           </div>
-          <div class="col-sm-4 offset-md-1 py-4">
+          <div class="col-sm-4 py-4">
             <h4>이용방법</h4>
             <ul class="list-unstyled">
-              <li><a href="#" class="text-white">설명서</a></li>
-              <li><a href="#" class="text-white">회원가입</a></li>
-              <li><a href="#" class="text-white">로그인</a></li>
+              <li>
+                <router-link to="/" class="text-white">메인 화면</router-link>
+              </li>
+              <li>
+                <router-link to="/login" class="text-white" v-if="!$store.state.account.id">로그인</router-link>
+                <router-link to="/login" class="text-white" @click="logout()" v-else>로그아웃</router-link>
+              </li>
+              <li>
+                <router-link to="/" class="text-white">회원가입</router-link>
+              </li>
             </ul>
           </div>
         </div>
@@ -25,13 +32,19 @@
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a href="#" class="navbar-brand d-flex align-items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+               stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+               viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
           <strong>디지몬 쇼핑몰</strong>
         </a>
         <button class="navbar-toggler">
           상품 등록
         </button>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
@@ -40,13 +53,24 @@
 </template>
 
 <script>
+import store from "@/scripts/store";
+import router from "@/scripts/router";
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  setup() {
+    const logout = ()=>{
+      store.commit('setAccount', 0);
+      sessionStorage.removeItem("id");
+      router.push({path: "/"});
+    }
+    return {logout}
+  }
 }
 </script>
 
 <style>
-.navbar-toggler{
+.navbar-toggler {
   float: right;
 }
 
