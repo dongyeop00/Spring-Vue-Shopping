@@ -45,7 +45,7 @@ export default {
     const submit = () => { //submit으로 받은 인자값들을 백으로 던져준다
       axios.post("/api/member/login", state.form).then((res)=>{
         store.commit('setAccount',res.data);
-        console.log(res);
+        console.log(res.data);
         router.push({path:"/"});
         window.alert("로그인 하였습니다.");
       }).catch(()=>{
